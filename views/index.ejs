@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= title %> | Mini Message Board</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <ul>
+      <li><a href="/new">Add new message</a></li>
+    </ul>
+    <% if (messages.length > 0) { %>
+      <% messages.forEach(message => { %>
+        <div class="message" style="margin-top:40px">
+          <h3><%= message.text %> </h3>
+          <p><%= message.user %> </p>
+          <p><%= message.added.toLocaleDateString() %> </p>
+        </div>
+      <% }) %> 
+    <% } else { %>
+      <p>There are no messages to display.</p>
+    <% } %> 
   </body>
 </html>
